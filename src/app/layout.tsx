@@ -14,8 +14,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
   },
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
+    icon: './favicon.svg',
+    shortcut: './favicon.svg',
   },
 }
 
