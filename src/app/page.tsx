@@ -1,387 +1,421 @@
+'use client'
+
 import Link from 'next/link'
 import {
-  Shield,
-  Clock,
-  Star,
-  ArrowRight,
-  Phone,
-  MapPin,
-  Sparkles,
-  Heart,
-  Users,
-  Leaf,
+  Star, Clock, Shield, ArrowRight, Phone, MapPin,
+  Heart, Leaf, Sparkles, Droplets, Wind, Hand, Sun
 } from 'lucide-react'
-import { getFeaturedServices } from '@/lib/services'
+import { useState, useEffect } from 'react'
 
-const featuredServices = getFeaturedServices()
+const services = [
+  {
+    slug: 'deep-tissue',
+    name: 'Deep Tissue',
+    icon: Hand,
+    price: 75,
+    duration: 60,
+    desc: 'Release chronic muscle tension at its source — layer by layer.',
+    img: '/images/deep-tissue.jpg',
+  },
+  {
+    slug: 'swedish',
+    name: 'Swedish Relaxation',
+    icon: Wind,
+    price: 75,
+    duration: 60,
+    desc: 'Melt away stress with long, flowing strokes that calm the nervous system.',
+    img: '/images/swedish.jpg',
+  },
+  {
+    slug: 'hot-stone',
+    name: 'Hot Stone',
+    icon: Sun,
+    price: 95,
+    duration: 75,
+    desc: 'Volcanic warmth penetrates deep into muscle for profound, lasting relief.',
+    img: '/images/hot-stone.jpg',
+  },
+  {
+    slug: 'couples',
+    name: 'Couples Massage',
+    icon: Heart,
+    price: 139,
+    duration: 60,
+    desc: 'Share the experience — side by side, in a synchronized session built for two.',
+    img: '/images/couples.jpg',
+  },
+  {
+    slug: 'prenatal',
+    name: 'Prenatal Care',
+    icon: Sparkles,
+    price: 79,
+    duration: 60,
+    desc: 'Gentle, nurturing touch designed for the extraordinary demands of pregnancy.',
+    img: '/images/prenatal.jpg',
+  },
+  {
+    slug: 'reflexology',
+    name: 'Reflexology',
+    icon: Droplets,
+    price: 60,
+    duration: 45,
+    desc: 'Precise pressure to reflex points in your feet unlocks full-body harmony.',
+    img: '/images/reflexology.jpg',
+  },
+]
+
+const trustBadges = [
+  { icon: Shield, label: 'VA Licensed', sub: 'Board Certified' },
+  { icon: Star, label: '4.9 / 5', sub: '250+ Reviews' },
+  { icon: Clock, label: '9AM–9:30PM', sub: '7 Days a Week' },
+  { icon: Leaf, label: 'Organic', sub: 'Lotions & Oils' },
+]
 
 const testimonials = [
   {
     name: 'Sarah M.',
-    rating: 5,
-    quote: 'I have been coming to Miracle Hands for over a year now. The therapists are incredibly skilled and always take time to understand my needs. My chronic back pain has significantly improved.',
+    quote: 'For the first time in years, I slept through the night. My shoulders don\'t feel like they\'re carrying a second skull. This is what I came for.',
+    service: 'Deep Tissue',
   },
   {
     name: 'James K.',
-    rating: 5,
-    quote: 'The hot stone massage here is unlike anywhere else I have been. The stones are perfectly heated and the technique is exceptional. I leave feeling completely renewed.',
+    quote: 'Walked in with a stiff neck from back-to-back meetings. Left feeling like I\'d come back from a long weekend. Booked my next session before I got to my car.',
+    service: 'Hot Stone',
   },
   {
-    name: 'Michelle R.',
-    rating: 5,
-    quote: 'As a pregnant woman, I was nervous about getting a massage. The prenatal massage here is exceptional — so gentle and nurturing. I look forward to my monthly visits.',
+    name: 'Angela R.',
+    quote: 'Being pregnant is exhausting enough without adding tension. My therapist found relief I didn\'t know I needed. I actually looked forward to my appointments.',
+    service: 'Prenatal',
   },
-]
-
-const popularServices = [
-  { name: 'Swedish Massage', duration: '60 min', price: 80 },
-  { name: 'Deep Tissue Massage', duration: '60 min', price: 90 },
-  { name: 'Hot Stone Massage', duration: '90 min', price: 120 },
-  { name: 'Couples Massage', duration: '60 min', price: 160 },
-]
-
-const trustIndicators = [
-  { icon: Shield, label: 'Licensed Therapists' },
-  { icon: Star, label: '20+ Services' },
-  { icon: Clock, label: '7 Days a Week' },
 ]
 
 export default function HomePage() {
+  const [stickyVisible, setStickyVisible] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setStickyVisible(window.scrollY > 600)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center bg-cream pt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            {/* Left: Copy */}
-            <div className="space-y-6 animate-fade-in">
-              <div className="flex gap-4">
-                {trustIndicators.map(({ icon: Icon, label }) => (
-                  <span
-                    key={label}
-                    className="flex items-center gap-2 text-sm text-charcoal/70 bg-sage/10 px-3 py-1.5 rounded-full"
-                  >
-                    <Icon size={14} className="text-sage" />
-                    {label}
-                  </span>
-                ))}
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-semibold text-charcoal leading-tight">
-                Your Journey to
-                <br />
-                <span className="text-sage">Wellness</span> Begins Here
-              </h1>
-              <p className="text-lg text-charcoal/70 max-w-lg">
-                Experience tranquility at our Centerville spa. Licensed therapists delivering personalized care for body, mind, and spirit — open 7 days a week.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/booking"
-                  className="inline-flex items-center justify-center bg-sage text-white px-8 py-3.5 rounded-full font-medium hover:bg-sage-600 transition-colors text-lg"
-                >
-                  Book Your Session
-                  <ArrowRight className="ml-2" size={18} />
-                </Link>
-                <a
-                  href="tel:571-380-6868"
-                  className="inline-flex items-center justify-center border-2 border-charcoal text-charcoal px-8 py-3.5 rounded-full font-medium hover:bg-charcoal hover:text-cream transition-colors text-lg"
-                >
-                  <Phone className="mr-2" size={18} />
-                  571-380-6868
-                </a>
-              </div>
+      {/* ── HERO ── */}
+      <section className="relative min-h-screen flex items-center">
+        {/* Background Image — uses local file served from /public/images/ */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(/images/spa-hero.jpg)',
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-charcoal/50 to-transparent" />
+        </div>
+
+        {/* Content — constrained width on mobile */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 w-full overflow-hidden">
+          <div className="max-w-xl animate-fade-up">
+            {/* Pill badges */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {['Licensed Therapists', '15+ Modalities', 'Same-Day Booking'].map((tag) => (
+                <span key={tag} className="text-xs bg-white/15 text-white/90 backdrop-blur-sm border border-white/20 px-3 py-1 rounded-full">
+                  {tag}
+                </span>
+              ))}
             </div>
 
-            {/* Right: Hero Image Placeholder */}
-            <div className="relative animate-slide-up">
-              <div className="aspect-[4/5] rounded-3xl bg-gradient-to-br from-sage/30 to-sage/10 flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(124,154,130,0.3),transparent_70%)]" />
-                <div className="text-center p-8">
-                  <Sparkles className="w-16 h-16 text-sage/50 mx-auto mb-4" />
-                  <p className="text-charcoal/50 text-sm">Spa interior photo coming soon</p>
-                </div>
-              </div>
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center">
-                  <Star className="w-6 h-6 text-gold fill-gold" />
-                </div>
-                <div>
-                  <p className="font-medium text-charcoal">4.9 Rating</p>
-                  <p className="text-sm text-charcoal/60">250+ Reviews</p>
-                </div>
-              </div>
+            {/* Headline — responsive fluid type */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-semibold text-white leading-tight mb-6">
+              Where Every Touch<br />
+              <span className="text-sage-300">Tells a Story</span><br />
+              of Healing
+            </h1>
+
+            {/* Sub */}
+            <p className="text-white/70 text-lg mb-8 max-w-md leading-relaxed">
+              Move without pain again. Our Centerville therapists listen to your body — not the clock — so you leave lighter than when you arrived.
+            </p>
+
+            {/* CTAs — full-width on mobile */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+              <Link
+                href="/booking"
+                className="inline-flex items-center justify-center bg-sage text-white px-8 py-4 rounded-full font-medium hover:bg-sage-600 transition-all duration-300 text-base shadow-xl shadow-sage/30"
+              >
+                Book Your Session
+                <ArrowRight className="ml-2" size={18} />
+              </Link>
+              <a
+                href="tel:571-380-6868"
+                className="inline-flex items-center justify-center border border-white/30 text-white px-8 py-4 rounded-full font-medium hover:bg-white/10 transition-all duration-300 text-base"
+              >
+                <Phone className="mr-2" size={18} />
+                571-380-6868
+              </a>
             </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float">
+          <span className="text-white/40 text-xs tracking-widest uppercase">Scroll</span>
+          <div className="w-5 h-8 border border-white/30 rounded-full flex justify-center pt-1.5">
+            <div className="w-1 h-2 bg-white/50 rounded-full animate-pulse" />
           </div>
         </div>
       </section>
 
-      {/* Services Bento Grid */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-charcoal mb-4">
-              Our Signature Services
+      {/* ── TRUST BAR ── */}
+      <section className="bg-white border-b border-cream-200">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {trustBadges.map(({ icon: Icon, label, sub }) => (
+              <div key={label} className="flex items-center gap-4">
+                <div className="w-11 h-11 rounded-2xl bg-sage/10 flex items-center justify-center flex-shrink-0">
+                  <Icon size={20} className="text-sage" />
+                </div>
+                <div>
+                  <p className="font-semibold text-charcoal text-sm leading-tight">{label}</p>
+                  <p className="text-charcoal/50 text-xs mt-0.5">{sub}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SERVICES GRID ── */}
+      <section className="py-20 md:py-28 bg-cream">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Header */}
+          <div className="text-center mb-14">
+            <span className="text-xs uppercase tracking-widest text-sage font-medium">What We Offer</span>
+            <h2 className="text-4xl md:text-5xl font-heading font-semibold text-charcoal mt-3 mb-4">
+              Your Body Deserves This
             </h2>
-            <p className="text-charcoal/60 text-lg max-w-2xl mx-auto">
-              From therapeutic deep tissue to serene hot stone, we offer over 15 modalities tailored to your unique needs.
+            <p className="text-charcoal/60 text-lg max-w-xl mx-auto">
+              15+ modalities — each one designed to dissolve what you&apos;re carrying, not just mask it.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {featuredServices.map((service, index) => (
-              <Link
-                key={service.slug}
-                href={`/services/${service.slug}`}
-                className={`group bg-cream rounded-2xl p-6 hover:shadow-lg transition-all duration-300 animate-slide-up ${
-                  index === 0 ? 'md:col-span-2 lg:col-span-2' : ''
-                }`}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="flex flex-col h-full">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-sage/10 flex items-center justify-center">
-                      <Leaf className="w-6 h-6 text-sage" />
-                    </div>
-                    <ArrowRight
-                      size={20}
-                      className="text-charcoal/30 group-hover:text-sage group-hover:translate-x-1 transition-all"
+          {/* 3-column grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((svc) => {
+              const Icon = svc.icon
+              return (
+                <Link
+                  key={svc.slug}
+                  href={`/services/${svc.slug}`}
+                  className="group bg-white rounded-3xl overflow-hidden shadow-luxury hover:shadow-luxury-hover transition-all duration-300 hover:-translate-y-1"
+                >
+                  {/* Image */}
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={svc.img}
+                      alt={svc.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <h3 className="text-xl font-heading font-semibold text-charcoal mb-2">
-                    {service.name}
-                  </h3>
-                  <p className="text-charcoal/60 text-sm mb-4 flex-grow">
-                    {service.shortDescription}
-                  </p>
-                  <div className="flex items-center justify-between mt-auto pt-4 border-t border-charcoal/10">
-                    <span className="text-sage font-semibold">From ${service.price}</span>
-                    <span className="text-charcoal/50 text-sm">{service.duration} min</span>
+
+                  {/* Content */}
+                  <div className="p-6">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="w-11 h-11 rounded-2xl bg-sage/10 flex items-center justify-center">
+                        <Icon size={20} className="text-sage" />
+                      </div>
+                      <ArrowRight size={18} className="text-charcoal/25 group-hover:text-sage group-hover:translate-x-1 transition-all" />
+                    </div>
+                    <h3 className="text-xl font-heading font-semibold text-charcoal mb-2">{svc.name}</h3>
+                    <p className="text-charcoal/55 text-sm mb-4 leading-relaxed">{svc.desc}</p>
+                    <div className="flex items-center justify-between pt-4 border-t border-cream-200">
+                      <span className="text-sage font-semibold">From ${svc.price}</span>
+                      <span className="text-charcoal/40 text-sm">{svc.duration} min</span>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              )
+            })}
           </div>
 
-          <div className="text-center mt-10">
+          {/* CTA row */}
+          <div className="text-center mt-12">
             <Link
               href="/services"
-              className="inline-flex items-center text-sage font-medium hover:text-sage-600 transition-colors"
+              className="inline-flex items-center gap-2 text-sage font-medium hover:text-sage-600 transition-colors text-base"
             >
-              View All 15+ Services
-              <ArrowRight className="ml-2" size={16} />
+              See All 15+ Ways to Feel Better
+              <ArrowRight size={16} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-16 md:py-24 bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-charcoal mb-4">
-              Why Miracle Hands?
+      {/* ── WHY CHOOSE US ── */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="text-xs uppercase tracking-widest text-sage font-medium">The Miracle Hands Difference</span>
+            <h2 className="text-4xl md:text-5xl font-heading font-semibold text-charcoal mt-3 mb-4">
+              Why Clients Come Back
             </h2>
-            <p className="text-charcoal/60 text-lg max-w-2xl mx-auto">
-              We combine ancient healing traditions with modern techniques for an exceptional wellness experience.
-            </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: Shield,
-                title: 'Licensed & Certified',
-                description:
-                  'All our therapists are state-licensed with advanced certifications in multiple modalities. Your safety and quality of care are our top priorities.',
+                icon: Heart,
+                title: 'Therapists Who Actually Listen',
+                desc: 'Your first session isn\'t a checklist — it\'s a conversation. We ask where you hurt, what brought you in, and what "good" feels like for you.',
               },
               {
-                icon: Heart,
-                title: 'Personalized Treatments',
-                description:
-                  'No cookie-cutter sessions here. We listen to your needs and tailor every treatment to your body\'s unique requirements and preferences.',
+                icon: Sparkles,
+                title: 'Feel the Difference by Day Three',
+                desc: 'Most clients report measurable relief within 48–72 hours. Not because we work harder — because we work smarter, targeting the root cause.',
               },
               {
                 icon: Clock,
-                title: 'Same-Day Appointments',
-                description:
-                  'Life is unpredictable. That\'s why we offer same-day booking availability. Walk in or call — we\'ll get you on the table quickly.',
+                title: 'Book Today, Feel Better Tomorrow',
+                desc: 'Same-day availability means you don\'t wait a week in pain. Call before noon and we\'ll get you on the table before dinner.',
               },
-            ].map((feature, index) => (
-              <div
-                key={feature.title}
-                className="bg-white rounded-2xl p-8 text-center hover:shadow-lg transition-shadow animate-slide-up"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="w-16 h-16 rounded-full bg-sage/10 flex items-center justify-center mx-auto mb-6">
-                  <feature.icon className="w-8 h-8 text-sage" />
+            ].map(({ icon: Icon, title, desc }) => (
+              <div key={title} className="bg-cream rounded-3xl p-8 text-center">
+                <div className="w-14 h-14 rounded-full bg-sage/10 flex items-center justify-center mx-auto mb-5">
+                  <Icon size={24} className="text-sage" />
                 </div>
-                <h3 className="text-xl font-heading font-semibold text-charcoal mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-charcoal/60">{feature.description}</p>
+                <h3 className="text-xl font-heading font-semibold text-charcoal mb-3">{title}</h3>
+                <p className="text-charcoal/60 text-sm leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-charcoal mb-4">
-              What Our Clients Say
+      {/* ── TESTIMONIALS ── */}
+      <section className="py-20 md:py-28 bg-cream">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="text-xs uppercase tracking-widest text-gold font-medium">Client Stories</span>
+            <h2 className="text-4xl md:text-5xl font-heading font-semibold text-charcoal mt-3 mb-4">
+              Real Relief. Real People.
             </h2>
-            <p className="text-charcoal/60 text-lg">
-              Real stories from our wellness community.
-            </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={testimonial.name}
-                className="bg-cream rounded-2xl p-6 animate-slide-up"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 text-gold fill-gold"
-                    />
+            {testimonials.map(({ name, quote, service }) => (
+              <div key={name} className="bg-white rounded-3xl p-8 shadow-luxury">
+                <div className="flex gap-1 mb-5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={15} className="text-gold fill-gold" />
                   ))}
                 </div>
-                <p className="text-charcoal/80 mb-4 leading-relaxed">
-                  &ldquo;{testimonial.quote}&rdquo;
-                </p>
-                <p className="font-medium text-charcoal">{testimonial.name}</p>
+                <p className="text-charcoal/75 mb-6 text-sm leading-relaxed italic">&ldquo;{quote}&rdquo;</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-sage/10 flex items-center justify-center">
+                    <span className="text-sm font-semibold text-sage">{name[0]}</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-charcoal text-sm">{name}</p>
+                    <p className="text-charcoal/45 text-xs">{service}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Pricing Preview */}
-      <section className="py-16 md:py-24 bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      {/* ── FIRST VISIT CTA ── */}
+      <section className="py-20 bg-sage text-white">
+        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+          <Sparkles size={32} className="mx-auto mb-5 opacity-70" />
+          <h2 className="text-4xl md:text-5xl font-heading font-semibold mb-4">
+            Your First Session — On Us
+          </h2>
+          <p className="text-white/70 text-lg mb-8 max-w-lg mx-auto leading-relaxed">
+            Book your first visit and we&apos;ll add a complimentary aromatherapy upgrade. The best way to meet your body is without barriers.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/booking"
+              className="inline-flex items-center justify-center bg-white text-sage px-8 py-4 rounded-full font-medium hover:bg-cream transition-colors text-base"
+            >
+              Claim Your Free Upgrade
+              <ArrowRight className="ml-2" size={18} />
+            </Link>
+            <a
+              href="tel:571-380-6868"
+              className="inline-flex items-center justify-center border-2 border-white/40 text-white px-8 py-4 rounded-full font-medium hover:bg-white/10 transition-colors text-base"
+            >
+              <Phone className="mr-2" size={18} />
+              571-380-6868
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── LOCATION ── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14">
             <div>
-              <h2 className="text-3xl md:text-4xl font-heading font-semibold text-charcoal mb-4">
-                Simple, Transparent Pricing
+              <span className="text-xs uppercase tracking-widest text-sage font-medium">Find Us</span>
+              <h2 className="text-4xl md:text-5xl font-heading font-semibold text-charcoal mt-3 mb-8">
+                Find Your Way to Less Pain
               </h2>
-              <p className="text-charcoal/60 text-lg mb-8">
-                No hidden fees. No pressure. Just exceptional care at fair prices.
-              </p>
-              <div className="space-y-4">
-                {popularServices.map((service, index) => (
-                  <div
-                    key={service.name}
-                    className="flex items-center justify-between bg-white rounded-xl p-4 animate-slide-up"
-                    style={{ animationDelay: `${index * 50}ms` }}
-                  >
-                    <div>
-                      <p className="font-medium text-charcoal">{service.name}</p>
-                      <p className="text-sm text-charcoal/50">{service.duration}</p>
+              <div className="space-y-6">
+                {[
+                  { icon: MapPin, label: 'Address', val: '14200G Centreville Square\nCenterville, VA 20121' },
+                  { icon: Clock, label: 'Hours', val: 'Monday – Sunday\n9:30AM – 9:30PM' },
+                  { icon: Phone, label: 'Phone', val: '571-380-6868', href: 'tel:571-380-6868' },
+                  { icon: Heart, label: 'Email', val: 'Miraclehandsva@gmail.com', href: 'mailto:Miraclehandsva@gmail.com' },
+                ].map(({ icon: Icon, label, val, href }) => (
+                  <div key={label} className="flex items-start gap-4">
+                    <div className="w-11 h-11 rounded-2xl bg-sage/10 flex items-center justify-center flex-shrink-0">
+                      <Icon size={18} className="text-sage" />
                     </div>
-                    <span className="text-xl font-heading font-semibold text-sage">
-                      ${service.price}
-                    </span>
+                    <div>
+                      <p className="font-medium text-charcoal text-sm">{label}</p>
+                      {href
+                        ? <a href={href} className="text-charcoal/60 text-sm hover:text-sage transition-colors">{val}</a>
+                        : <p className="text-charcoal/60 text-sm whitespace-pre-line">{val}</p>
+                      }
+                    </div>
                   </div>
                 ))}
               </div>
-              <Link
-                href="/services"
-                className="inline-flex items-center text-sage font-medium hover:text-sage-600 transition-colors mt-6"
-              >
-                View All Services & Pricing
-                <ArrowRight className="ml-2" size={16} />
-              </Link>
             </div>
-            <div className="bg-sage/10 rounded-3xl p-8 md:p-10 text-center">
-              <Users className="w-12 h-12 text-sage mx-auto mb-4" />
-              <h3 className="text-2xl font-heading font-semibold text-charcoal mb-3">
-                First-Time Visitor?
-              </h3>
-              <p className="text-charcoal/70 mb-6">
-                Book your first session and experience the Miracle Hands difference. New clients receive a complimentary aromatherapy upgrade.
-              </p>
-              <Link
-                href="/booking"
-                className="inline-flex items-center bg-sage text-white px-8 py-3.5 rounded-full font-medium hover:bg-sage-600 transition-colors"
-              >
-                Book Your First Session
-                <ArrowRight className="ml-2" size={18} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Location Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-heading font-semibold text-charcoal mb-6">
-                Visit Our Spa
-              </h2>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <MapPin className="w-6 h-6 text-sage mt-1" />
-                  <div>
-                    <p className="font-medium text-charcoal">Address</p>
-                    <p className="text-charcoal/60">14200G Centreville Square<br />Centerville, VA 20121</p>
-                  </div>
+            {/* Map placeholder */}
+            <div className="rounded-3xl overflow-hidden bg-cream min-h-[360px] flex items-center justify-center relative">
+              <img
+                src="/images/spa-interior.jpg"
+                alt="Spa interior"
+                className="absolute inset-0 w-full h-full object-cover opacity-40"
+              />
+              <div className="relative text-center p-8">
+                <div className="w-14 h-14 rounded-2xl bg-white/90 flex items-center justify-center mx-auto mb-4 shadow-luxury">
+                  <MapPin size={24} className="text-sage" />
                 </div>
-                <div className="flex items-start gap-4">
-                  <Clock className="w-6 h-6 text-sage mt-1" />
-                  <div>
-                    <p className="font-medium text-charcoal">Hours</p>
-                    <p className="text-charcoal/60">Monday – Sunday: 9:30AM – 9:30PM</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <Phone className="w-6 h-6 text-sage mt-1" />
-                  <div>
-                    <p className="font-medium text-charcoal">Phone</p>
-                    <a href="tel:571-380-6868" className="text-charcoal/60 hover:text-sage transition-colors">
-                      571-380-6868
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <svg className="w-6 h-6 text-sage mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <div>
-                    <p className="font-medium text-charcoal">Email</p>
-                    <a href="mailto:Miraclehandsva@gmail.com" className="text-charcoal/60 hover:text-sage transition-colors">
-                      Miraclehandsva@gmail.com
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-cream rounded-2xl overflow-hidden min-h-[400px] flex items-center justify-center">
-              <div className="text-center p-8">
-                <MapPin className="w-12 h-12 text-sage/50 mx-auto mb-4" />
-                <p className="text-charcoal/50 text-sm">Map Component</p>
-                <p className="text-charcoal/40 text-xs mt-1">Integrate with Google Maps API</p>
+                <p className="text-charcoal/70 text-sm">Centerville, VA</p>
+                <p className="text-charcoal/40 text-xs mt-1">14200G Centreville Square</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Sticky Mobile CTA */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-charcoal/10 p-4 md:hidden z-40">
-        <Link
-          href="/booking"
-          className="block w-full bg-sage text-white text-center py-3.5 rounded-full font-medium"
-        >
-          Book Now — 571-380-6868
-        </Link>
+      {/* ── STICKY MOBILE CTA ── */}
+      <div
+        className={`fixed bottom-0 left-0 right-0 z-50 md:hidden transition-transform duration-400 ${
+          stickyVisible ? 'translate-y-0' : 'translate-y-full'
+        }`}
+      >
+        <div className="bg-white border-t border-cream-200 p-4 shadow-2xl">
+          <Link
+            href="/booking"
+            className="block w-full bg-sage text-white text-center py-4 rounded-2xl font-semibold text-base shadow-xl shadow-sage/25"
+          >
+            Book Now — 571-380-6868
+          </Link>
+        </div>
       </div>
     </>
   )
