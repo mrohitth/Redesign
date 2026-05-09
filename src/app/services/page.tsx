@@ -25,32 +25,39 @@ export default function ServicesPage() {
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="group bg-cream rounded-2xl p-6 hover:shadow-lg transition-all duration-300"
+                className="group bg-cream rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-sage/10 flex items-center justify-center">
-                    <Leaf className="w-6 h-6 text-sage" />
-                  </div>
-                  <span className="text-xs bg-sage/10 text-sage px-3 py-1 rounded-full">
-                    {service.category}
-                  </span>
+                {/* Service Image */}
+                <div className="aspect-[16/9] overflow-hidden">
+                  <img
+                    src={service.image || `/Redesign/images/${service.slug}.jpg`}
+                    alt={service.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
-                <h3 className="text-xl font-heading font-semibold text-charcoal mb-2">
-                  {service.name}
-                </h3>
-                <p className="text-charcoal/60 text-sm mb-4 line-clamp-2">
-                  {service.shortDescription}
-                </p>
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-charcoal/10">
-                  <span className="text-sage font-semibold">From ${service.price}</span>
-                  <div className="flex items-center gap-1 text-sm text-charcoal/50">
-                    <Clock size={14} />
-                    {service.duration} min
+                {/* Content */}
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-sage/10 flex items-center justify-center">
+                      <Leaf className="w-6 h-6 text-sage" />
+                    </div>
+                    <span className="text-xs bg-sage/10 text-sage px-3 py-1 rounded-full">
+                      {service.category}
+                    </span>
                   </div>
-                </div>
-                <div className="flex items-center gap-1 mt-3 text-sage text-sm font-medium group-hover:text-sage-600 transition-colors">
-                  Learn more
-                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  <h3 className="text-xl font-heading font-semibold text-charcoal mb-2">
+                    {service.name}
+                  </h3>
+                  <p className="text-charcoal/60 text-sm mb-4 line-clamp-2">
+                    {service.shortDescription}
+                  </p>
+                  <div className="flex items-center justify-between mt-auto pt-4 border-t border-charcoal/10">
+                    <span className="text-sage font-semibold">From ${service.price}</span>
+                    <div className="flex items-center gap-1 text-sm text-charcoal/50">
+                      <Clock size={14} />
+                      {service.duration} min
+                    </div>
+                  </div>
                 </div>
               </Link>
             ))}
