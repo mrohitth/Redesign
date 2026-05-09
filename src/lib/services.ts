@@ -36,7 +36,7 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['swedish', 'trigger-point'],
     icon: 'hands',
-    image: './images/deep-tissue.jpg',
+    image: '/Redesign/images/deep-tissue.jpg',
     featured: true,
   },
   {
@@ -60,7 +60,7 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['deep-tissue', 'hot-stone'],
     icon: 'feather',
-    image: './images/swedish.jpg',
+    image: '/Redesign/images/swedish.jpg',
     featured: true,
   },
   {
@@ -84,7 +84,7 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['swedish', 'deep-tissue'],
     icon: 'flame',
-    image: './images/hot-stone.jpg',
+    image: '/Redesign/images/hot-stone.jpg',
     featured: true,
   },
   {
@@ -108,7 +108,7 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['swedish', 'hot-stone'],
     icon: 'heart',
-    image: './images/couples.jpg',
+    image: '/Redesign/images/couples.jpg',
     featured: true,
   },
   {
@@ -132,7 +132,7 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['swedish'],
     icon: 'baby',
-    image: './images/prenatal.jpg',
+    image: '/Redesign/images/prenatal.jpg',
     featured: true,
   },
   {
@@ -156,7 +156,7 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['swedish', 'trigger-point', 'tuina'],
     icon: 'footprints',
-    image: './images/reflexology.jpg',
+    image: '/Redesign/images/reflexology.jpg',
     featured: true,
   },
   {
@@ -180,7 +180,7 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['deep-tissue', 'therapeutic'],
     icon: 'cross',
-    image: './images/trigger-point.jpg',
+    image: '/Redesign/images/trigger-point.jpg',
   },
   {
     slug: 'tuina',
@@ -203,7 +203,7 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['reflexology', 'deep-tissue'],
     icon: 'wind',
-    image: './images/tuina.jpg',
+    image: '/Redesign/images/tuina.jpg',
   },
   {
     slug: 'therapeutic',
@@ -226,7 +226,7 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['deep-tissue', 'trigger-point'],
     icon: 'heart-pulse',
-    image: './images/therapeutic.jpg',
+    image: '/Redesign/images/therapeutic.jpg',
   },
 ]
 
