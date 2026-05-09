@@ -11,6 +11,7 @@ export interface Service {
   relatedSlugs: string[]
   icon: string
   featured?: boolean
+  image?: string
 }
 
 export const services: Service[] = [
@@ -35,6 +36,7 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['swedish', 'trigger-point'],
     icon: 'hands',
+    image: './images/deep-tissue.jpg',
     featured: true,
   },
   {
@@ -58,6 +60,7 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['deep-tissue', 'hot-stone'],
     icon: 'feather',
+    image: './images/swedish.jpg',
     featured: true,
   },
   {
@@ -81,6 +84,7 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['swedish', 'deep-tissue'],
     icon: 'flame',
+    image: './images/hot-stone.jpg',
     featured: true,
   },
   {
@@ -88,7 +92,7 @@ export const services: Service[] = [
     name: 'Couples Massage',
     category: 'Specialty',
     shortDescription: 'Share relaxation with a partner in our private couples suite.',
-    description: 'Experience the ultimate in shared relaxation with our couples massage service. Two therapists work simultaneously in our private couples suite, using synchronized Swedish orDeep Tissue techniques. Perfect for anniversaries, honeymoons, or simply sharing the gift of wellness with someone special.',
+    description: 'Experience the ultimate in shared relaxation with our couples massage service. Two therapists work simultaneously in our private couples suite, using synchronized Swedish or Deep Tissue techniques. Perfect for anniversaries, honeymoons, or simply sharing the gift of wellness with someone special.',
     benefits: [
       'Shared wellness experience',
       'Private, intimate setting',
@@ -104,6 +108,7 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['swedish', 'hot-stone'],
     icon: 'heart',
+    image: './images/couples.jpg',
     featured: true,
   },
   {
@@ -127,6 +132,7 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['swedish'],
     icon: 'baby',
+    image: './images/prenatal.jpg',
     featured: true,
   },
   {
@@ -150,6 +156,7 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['swedish', 'trigger-point', 'tuina'],
     icon: 'footprints',
+    image: './images/reflexology.jpg',
     featured: true,
   },
   {
@@ -173,13 +180,14 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['deep-tissue', 'therapeutic'],
     icon: 'cross',
+    image: './images/trigger-point.jpg',
   },
   {
     slug: 'tuina',
     name: 'Tuina Massage',
     category: 'Alternative',
     shortDescription: 'Traditional Chinese therapeutic massage with pushing and pulling techniques.',
-    description: 'Tuina (pronounced "twee-nah") is a Traditional Chinese Medicine therapeutic massage using rhythmic compressions, rolling, and stretching techniques along energy meridians. Unlike Western massage, Tuina works to balance the body\'s energy flow (Qi) and is particularly effective for chronic pain, stress, and internal disorders.',
+    description: "Tuina (pronounced \"twee-nah\") is a Traditional Chinese Medicine therapeutic massage using rhythmic compressions, rolling, and stretching techniques along energy meridians. Unlike Western massage, Tuina works to balance the body's energy flow (Qi) and is particularly effective for chronic pain, stress, and internal disorders.",
     benefits: [
       'Balances body energy (Qi)',
       'Treats chronic pain conditions',
@@ -195,6 +203,7 @@ export const services: Service[] = [
     ],
     relatedSlugs: ['reflexology', 'deep-tissue'],
     icon: 'wind',
+    image: './images/tuina.jpg',
   },
   {
     slug: 'therapeutic',
@@ -215,8 +224,9 @@ export const services: Service[] = [
       { name: 'Infrared heat therapy', price: 20 },
       { name: 'Electrotherapy add-on', price: 25 },
     ],
-    relatedSlugs: ['deep-tissue', 'trigger-point', 'sports-massage'],
+    relatedSlugs: ['deep-tissue', 'trigger-point'],
     icon: 'heart-pulse',
+    image: './images/therapeutic.jpg',
   },
 ]
 

@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 import Link from 'next/link'
 import { getServiceBySlug, services } from '@/lib/services'
 import { ArrowLeft, Clock, Check, Star, ArrowRight } from 'lucide-react'
@@ -62,14 +63,24 @@ export default function ServiceDetailPage({ params }: Props) {
                 </div>
               </div>
             </div>
-            <div className="bg-sage/10 rounded-2xl p-8 text-center">
-              <p className="text-charcoal/60 mb-2">Starting from</p>
-              <p className="text-5xl font-heading font-semibold text-sage mb-6">
+            <div className="relative h-64 lg:h-auto rounded-2xl overflow-hidden mb-6">
+              {service.image && (
+                <Image
+                  src={service.image}
+                  alt={service.name}
+                  fill
+                  className="object-cover"
+                />
+              )}
+            </div>
+            <div className="bg-sage/10 rounded-2xl p-6 text-center">
+              <p className="text-charcoal/60 mb-1 text-sm">Starting from</p>
+              <p className="text-4xl font-heading font-semibold text-sage mb-4">
                 ${service.price}
               </p>
               <Link
                 href="/booking"
-                className="inline-flex items-center justify-center bg-sage text-white px-8 py-3.5 rounded-full font-medium hover:bg-sage-600 transition-colors w-full"
+                className="inline-flex items-center justify-center bg-sage text-white px-6 py-3 rounded-full font-medium hover:bg-sage-600 transition-colors w-full"
               >
                 Book This Service
               </Link>
