@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 import Link from 'next/link'
 import { getServiceBySlug, services } from '@/lib/services'
 import { ArrowLeft, Clock, Check, Star, ArrowRight } from 'lucide-react'
@@ -41,7 +40,7 @@ export default function ServiceDetailPage({ params }: Props) {
             <ArrowLeft className="mr-2" size={16} />
             All Services
           </Link>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <div>
               <span className="text-sm bg-sage/10 text-sage px-3 py-1 rounded-full">
                 {service.category}
@@ -55,7 +54,7 @@ export default function ServiceDetailPage({ params }: Props) {
               <div className="flex items-center gap-6 text-charcoal/70">
                 <div className="flex items-center gap-2">
                   <Clock className="text-sage" size={18} />
-                  <span>{service.duration} minutes</span>
+                  <span>{service.duration} min</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Star className="text-gold fill-gold" size={18} />
@@ -63,27 +62,28 @@ export default function ServiceDetailPage({ params }: Props) {
                 </div>
               </div>
             </div>
-            <div className="relative h-64 lg:h-auto rounded-2xl overflow-hidden mb-6">
-              {service.image && (
-                <Image
-                  src={service.image}
-                  alt={service.name}
-                  fill
-                  className="object-cover"
-                />
-              )}
-            </div>
-            <div className="bg-sage/10 rounded-2xl p-6 text-center">
-              <p className="text-charcoal/60 mb-1 text-sm">Starting from</p>
-              <p className="text-4xl font-heading font-semibold text-sage mb-4">
-                ${service.price}
-              </p>
-              <Link
-                href="/booking"
-                className="inline-flex items-center justify-center bg-sage text-white px-6 py-3 rounded-full font-medium hover:bg-sage-600 transition-colors w-full"
-              >
-                Book This Service
-              </Link>
+            <div className="space-y-6">
+              <div className="relative h-64 rounded-2xl overflow-hidden">
+                {service.image && (
+                  <img
+                    src={service.image}
+                    alt={service.name}
+                    className="w-full h-full object-cover"
+                  />
+                )}
+              </div>
+              <div className="bg-sage/10 rounded-2xl p-6 text-center">
+                <p className="text-charcoal/60 mb-1 text-sm">Starting from</p>
+                <p className="text-4xl font-heading font-semibold text-sage mb-4">
+                  ${service.price}
+                </p>
+                <Link
+                  href="/booking"
+                  className="inline-flex items-center justify-center bg-sage text-white px-6 py-3 rounded-full font-medium hover:bg-sage-600 transition-colors w-full"
+                >
+                  Book This Service
+                </Link>
+              </div>
             </div>
           </div>
         </div>
