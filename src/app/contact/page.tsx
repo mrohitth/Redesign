@@ -37,15 +37,10 @@ const serviceOptions = [
   'Hot Stone Massage',
   'Couples Massage',
   'Prenatal Massage',
-  'Sports Massage',
+  'Therapeutic Massage',
   'Reflexology',
   'Trigger Point Therapy',
   'Tuina Massage',
-  'Lomi Lomi Massage',
-  'Lymphatic Drainage Massage',
-  'Fire Cupping',
-  'Body Scrub',
-  'Aromatherapy',
   'Not sure — need a recommendation',
 ]
 
