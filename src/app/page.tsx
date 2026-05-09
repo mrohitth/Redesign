@@ -103,14 +103,8 @@ export default function HomePage() {
       {/* ── HERO ── */}
       <section className="relative min-h-screen flex items-center">
         {/* Background Image — uses local file served from /public/images/ */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: 'url(./images/spa-hero.jpg)',
-          }}
-        >
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(./images/spa-hero.jpg)', filter: 'blur(2px)' }} />
           <div className="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-charcoal/50 to-transparent" />
-        </div>
 
         {/* Content — constrained width on mobile */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 w-full overflow-hidden">
