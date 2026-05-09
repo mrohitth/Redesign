@@ -15,7 +15,7 @@ const services = [
     price: 75,
     duration: 60,
     desc: 'Release chronic muscle tension at its source — layer by layer.',
-    img: '/images/deep-tissue.jpg',
+    img: './images/deep-tissue.jpg',
   },
   {
     slug: 'swedish',
@@ -24,7 +24,7 @@ const services = [
     price: 75,
     duration: 60,
     desc: 'Melt away stress with long, flowing strokes that calm the nervous system.',
-    img: '/images/swedish.jpg',
+    img: './images/swedish.jpg',
   },
   {
     slug: 'hot-stone',
@@ -33,7 +33,7 @@ const services = [
     price: 95,
     duration: 75,
     desc: 'Volcanic warmth penetrates deep into muscle for profound, lasting relief.',
-    img: '/images/hot-stone.jpg',
+    img: './images/hot-stone.jpg',
   },
   {
     slug: 'couples',
@@ -42,7 +42,7 @@ const services = [
     price: 139,
     duration: 60,
     desc: 'Share the experience — side by side, in a synchronized session built for two.',
-    img: '/images/couples.jpg',
+    img: './images/couples.jpg',
   },
   {
     slug: 'prenatal',
@@ -51,7 +51,7 @@ const services = [
     price: 79,
     duration: 60,
     desc: 'Gentle, nurturing touch designed for the extraordinary demands of pregnancy.',
-    img: '/images/prenatal.jpg',
+    img: './images/prenatal.jpg',
   },
   {
     slug: 'reflexology',
@@ -60,7 +60,7 @@ const services = [
     price: 60,
     duration: 45,
     desc: 'Precise pressure to reflex points in your feet unlocks full-body harmony.',
-    img: '/images/reflexology.jpg',
+    img: './images/reflexology.jpg',
   },
 ]
 
@@ -106,7 +106,7 @@ export default function HomePage() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(/images/spa-hero.jpg)',
+            backgroundImage: 'url(./images/spa-hero.jpg)',
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-charcoal/50 to-transparent" />
@@ -386,7 +386,7 @@ export default function HomePage() {
             {/* Map placeholder */}
             <div className="rounded-3xl overflow-hidden bg-cream min-h-[360px] flex items-center justify-center relative">
               <img
-                src="/images/spa-interior.jpg"
+                src="./images/spa-interior.jpg"
                 alt="Spa interior"
                 className="absolute inset-0 w-full h-full object-cover opacity-40"
               />
