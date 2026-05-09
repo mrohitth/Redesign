@@ -63,7 +63,6 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // In production: integrate with email service (Formspree, Resend, etc.)
-    console.log('Form submitted:', formData)
     setSubmitted(true)
   }
 
