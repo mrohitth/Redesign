@@ -36,14 +36,14 @@ export default function Header() {
         }`}
         style={scrolled ? { backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' } : {}}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-18 md:h-20">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-9 h-9 rounded-xl bg-sage/10 flex items-center justify-center group-hover:bg-sage/20 transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 md:h-20">
+            {/* Logo — prevent text overflow clipping */}
+            <Link href="/" className="flex items-center gap-2 group flex-shrink-0 min-w-0">
+              <div className="w-9 h-9 rounded-xl bg-sage/10 flex items-center justify-center group-hover:bg-sage/20 transition-all duration-300 flex-shrink-0">
                 <Leaf size={18} className="text-sage" />
               </div>
-              <span className="text-xl md:text-2xl font-heading font-semibold text-charcoal tracking-tight">
+              <span className="text-xl md:text-2xl font-heading font-semibold text-charcoal tracking-tight whitespace-nowrap overflow-hidden">
                 Miracle Hands
               </span>
             </Link>
@@ -76,10 +76,10 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Mobile Toggle */}
+            {/* Mobile Toggle — force to edge with negative margin */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden p-2 rounded-xl hover:bg-sage/10 transition-colors duration-300"
+              className="md:hidden p-2 rounded-xl hover:bg-sage/10 transition-colors duration-300 flex-shrink-0 -mr-2"
               aria-label="Toggle menu"
             >
               {menuOpen ? <X size={22} className="text-charcoal" /> : <Menu size={22} className="text-charcoal" />}
