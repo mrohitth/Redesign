@@ -1,13 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  basePath: '/Redesign',
   images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'images.unsplash.com' },
-      { protocol: 'https', hostname: 'picsum.photos' },
-      { protocol: 'https', hostname: 'oasiswellnessva.com' },
-    ],
     unoptimized: true,
   },
+  trailingSlash: true,
+  assetPrefix: '/Redesign',
 }
 
 module.exports = nextConfig

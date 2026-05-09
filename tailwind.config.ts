@@ -63,6 +63,20 @@ const config: Config = {
         'slide-up': 'slideUp 0.6s ease-out',
         'scale-in': 'scaleIn 0.4s ease-out',
       },
+      borderRadius: {
+        xl: '1rem',
+        '2xl': '1.5rem',
+        '3xl': '2rem',
+      },
+      boxShadow: {
+        soft: '0 2px 30px rgba(0,0,0,0.06)',
+        card: '0 4px 40px rgba(0,0,0,0.08)',
+        'card-hover': '0 8px 60px rgba(0,0,0,0.12)',
+        glow: '0 0 40px rgba(124,154,130,0.2)',
+      },
+      transitionTimingFunction: {
+        spring: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+      },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },

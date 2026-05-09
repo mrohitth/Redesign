@@ -7,27 +7,27 @@ const faqs = [
   {
     question: 'Do I need to book in advance?',
     answer:
-      'While we do accept walk-ins based on availability, we strongly recommend booking in advance — especially on weekends. Same-day bookings are often available; call us to check.',
+      'Advance booking is always safest — especially on weekends when we fill up fast. But if something suddenly hurts and you need relief today, call us before noon and we\'ll do everything we can to get you on the table the same day.',
   },
   {
     question: 'What should I wear to my massage?',
     answer:
-      'Wear loose, comfortable clothing. For most massage styles, you will be asked to undress to your level of comfort — you will always be properly draped with a sheet or towel.',
+      'Wear whatever helps you feel comfortable and unvisited. We\'ll guide you through what to expect when you arrive, and you\'re always draped professionally. Some clients undress fully, some don\'t — it\'s completely your call.',
   },
   {
     question: 'How early should I arrive for my appointment?',
     answer:
-      'Please arrive at least 10–15 minutes before your scheduled appointment. This gives you time to check in, use the restroom, and relax before your session begins.',
+      'About 10–15 minutes is plenty. That gives you time to breathe, change if needed, and settle before your session starts. Rushing into a massage with a racing heart defeats the purpose — we want you already calm when your therapist begins.',
   },
   {
     question: 'Do you offer gift cards?',
     answer:
-      'Yes! Gift cards are available in any denomination. They make a thoughtful gift for birthdays, holidays, or just because. Ask us at the front desk or call to purchase.',
+      'Yes. Gift cards are available in any amount and never expire. They\'re one of the most requested gifts we receive — which tells us a lot of people out there know someone who deserves a break.',
   },
   {
     question: 'What forms of payment do you accept?',
     answer:
-      'We accept cash, all major credit cards, and mobile payments including Apple Pay and Google Pay. Payment is collected at the end of your session.',
+      'Cash, all major credit cards, Apple Pay, and Google Pay. Payment is collected after your session — no advance payment required for first-time visitors.',
   },
 ]
 
@@ -78,10 +78,10 @@ export default function ContactPage() {
       <section className="pt-32 pb-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-heading font-semibold text-charcoal mb-4">
-            Get in Touch
+            Let\'s Talk About How We Can Help
           </h1>
           <p className="text-charcoal/60 text-lg max-w-2xl">
-            Questions about our services, booking, or anything else? We respond to all inquiries within 24 hours.
+            Whether you have a specific pain point or just know you need something — we\'re good at figuring it out together. Most messages get a response within a few hours.
           </p>
         </div>
       </section>
@@ -101,7 +101,7 @@ export default function ContactPage() {
                     Message Sent!
                   </h3>
                   <p className="text-charcoal/60">
-                    Thank you for reaching out. We will get back to you within 24 hours.
+                    Thank you for reaching out. We\'ll get back to you within 24 hours — usually much sooner.
                   </p>
                 </div>
               ) : (
@@ -154,7 +154,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label htmlFor="service" className="block text-sm font-medium text-charcoal mb-2">
-                      Service Interest
+                      What brings you in?
                     </label>
                     <select
                       id="service"
@@ -163,7 +163,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       className="w-full border border-charcoal/20 rounded-xl px-4 py-3 text-charcoal focus:outline-none focus:ring-2 focus:ring-sage/50 bg-white"
                     >
-                      <option value="">Select a service...</option>
+                      <option value="">Select what resonates...</option>
                       {serviceOptions.map((opt) => (
                         <option key={opt} value={opt}>
                           {opt}
@@ -173,7 +173,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-charcoal mb-2">
-                      Message
+                      Anything else we should know?
                     </label>
                     <textarea
                       id="message"
@@ -182,7 +182,7 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleChange}
                       className="w-full border border-charcoal/20 rounded-xl px-4 py-3 text-charcoal focus:outline-none focus:ring-2 focus:ring-sage/50 resize-none"
-                      placeholder="Tell us how we can help..."
+                      placeholder="Injuries, preferences, what you\'re hoping to feel after..."
                     />
                   </div>
                   <button
@@ -198,12 +198,12 @@ export default function ContactPage() {
             {/* Contact Info Sidebar */}
             <div className="space-y-6">
               <div className="bg-cream rounded-2xl p-6">
-                <h3 className="font-heading font-semibold text-charcoal mb-4">Contact Info</h3>
+                <h3 className="font-heading font-semibold text-charcoal mb-4">Find Us</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-sage mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="font-medium text-charcoal text-sm">Address</p>
+                      <p className="font-medium text-charcoal text-sm">Location</p>
                       <p className="text-charcoal/60 text-sm">
                         14200G Centreville Square
                         <br />
@@ -240,9 +240,9 @@ export default function ContactPage() {
               </div>
 
               <div className="bg-sage/10 rounded-2xl p-6">
-                <h3 className="font-heading font-semibold text-charcoal mb-2">Quick Book</h3>
+                <h3 className="font-heading font-semibold text-charcoal mb-2">Want to Talk Right Now?</h3>
                 <p className="text-charcoal/60 text-sm mb-4">
-                  Prefer to talk? Call us directly or book your session online in under 2 minutes.
+                  Sometimes it\'s easier to just call. We\'re here 9:30AM–9:30PM, 7 days a week — and we\'re good at matching you with the right therapist on the spot.
                 </p>
                 <a
                   href="tel:571-380-6868"
@@ -274,8 +274,11 @@ export default function ContactPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-semibold text-charcoal mb-4">
-              Frequently Asked Questions
+              Questions Before You Book?
             </h2>
+            <p className="text-charcoal/60 text-lg">
+              We\'ve heard them all — here are some answers that actually help.
+            </p>
           </div>
           <div className="space-y-3">
             {faqs.map((faq, index) => (

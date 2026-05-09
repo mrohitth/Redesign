@@ -5,19 +5,19 @@ const team = [
   {
     name: 'Linda Chen',
     credentials: 'LMT, CMMP, Certified Prenatal Massage Therapist',
-    bio: 'With over 12 years of experience in therapeutic massage, Linda specializes in prenatal care and deep tissue therapy. Her intuitive approach helps clients achieve lasting relief from chronic pain and stress.',
+    bio: 'Linda doesn\'t just locate pain — she asks what your life would feel like without it. With 12 years of prenatal and deep tissue experience, she creates space for clients who have been putting their own needs last. Her clients describe sessions as the first time someone actually listened to their body.',
     specialty: 'Prenatal & Deep Tissue',
   },
   {
     name: 'Marcus Williams',
     credentials: 'LMT, Sports Massage Certified, BCTP',
-    bio: 'A former athletic trainer, Marcus brings a biomechanics-focused perspective to every session. He works extensively with athletes and active individuals recovering from injury or preparing for competition.',
+    bio: 'Marcus thinks in movement patterns, not just muscles. He spent years watching how athletes break down — and now helps them rebuild differently. His clients come back because he explains what he\'s doing and why, so each session builds on the last one.',
     specialty: 'Sports & Therapeutic Massage',
   },
   {
     name: 'Aiko Tanaka',
     credentials: 'LMT, Tuina Practitioner, Hot Stone Certified',
-    bio: 'Trained in both Western massage therapy and traditional Chinese medicine, Aiko integrates Eastern and Western techniques. Her hot stone and Tuina sessions are renowned for their healing depth.',
+    bio: 'Trained in the quiet precision of Eastern healing arts, Aiko brings a different kind of attention to every session. Her hot stone work isn\'t just relaxation — clients report feeling "rewired" after, like their nervous system finally exhaled. She listens to your body\'s language before she speaks it.',
     specialty: 'Hot Stone & Tuina',
   },
 ]
@@ -38,10 +38,10 @@ export default function AboutPage() {
       <section className="pt-32 pb-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-heading font-semibold text-charcoal mb-4">
-            Our Story
+            Finally — A Massage Built Around You
           </h1>
           <p className="text-charcoal/60 text-lg max-w-2xl">
-            Miracle Hands Massage & Spa was founded on a simple belief: everyone deserves access to healing touch. Nestled in the heart of Centerville, we've built more than a spa — we've built a wellness sanctuary.
+            We built Miracle Hands because we got tired of places that treat your body like a generic checklist. Here, your story comes first.
           </p>
         </div>
       </section>
@@ -53,16 +53,16 @@ export default function AboutPage() {
             <div>
               <span className="text-sage font-medium text-sm uppercase tracking-wider">Our Philosophy</span>
               <h2 className="text-3xl md:text-4xl font-heading font-semibold text-charcoal mt-2 mb-6">
-                Healing Begins with Human Connection
+                Your Relief Is Not a Commodity
               </h2>
               <p className="text-charcoal/70 text-lg mb-6 leading-relaxed">
-                "The natural healing force in each one of us is the greatest force in getting well." We take this Hippocratic ideal seriously. Every session at Miracle Hands begins not with a table — but with a conversation.
+                "The natural healing force in each one of us is the greatest force in getting well." We take this Hippocratic ideal seriously — because we believe the body already knows how to heal. Our job is to get out of its way.
               </p>
               <p className="text-charcoal/70 text-lg mb-6 leading-relaxed">
-                Our therapists take time to understand your body's unique story: where you carry tension, what brings you in, and what outcomes you're hoping for. No cookie-cutter sessions. No rushing to the next appointment.
+                Every session starts with a conversation, not a table. We ask what brought you here, what "good" means for you, and where you feel most stuck. Then we work backward from there. No scripts. No guessing.
               </p>
               <p className="text-charcoal/70 text-lg leading-relaxed">
-                We believe in treating the whole person — body, mind, and energy — drawing from Western anatomy knowledge and Eastern healing traditions. The result is a massage experience that actually addresses the root of your discomfort, not just the symptoms.
+                By the time you leave, we want you to feel like someone finally heard what you were carrying — not just your muscles, but the weight of your day, your week, your life. That\'s the difference between a massage and a healing experience.
               </p>
             </div>
             <div className="bg-sage/10 rounded-3xl p-8 md:p-10">
@@ -80,10 +80,10 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-semibold text-charcoal mb-4">
-              Credentials & Certifications
+              What It Means to Be in Good Hands
             </h2>
             <p className="text-charcoal/60 text-lg max-w-2xl mx-auto">
-              Rest assured — you're in highly qualified hands. All our therapists meet or exceed Virginia state licensing requirements and maintain active certifications.
+              Certifications aren\'t just boxes for us — they\'re proof that someone earned the right to work on your body. Every therapist here meets Virginia\'s highest standards.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -104,10 +104,10 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-semibold text-charcoal mb-4">
-              Meet Your Therapists
+              The People Who Make the Difference
             </h2>
             <p className="text-charcoal/60 text-lg max-w-2xl mx-auto">
-              Our team brings decades of combined experience and a genuine passion for helping people feel better.
+              These aren\'t just therapists — they\'re listeners. They\'ve spent years learning how to hear what your body is saying.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -140,10 +140,10 @@ export default function AboutPage() {
       <section className="py-16 bg-sage text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-semibold mb-4">
-            Ready to Experience the Difference?
+            Ready to Feel What It\'s Like When Someone Actually Listens?
           </h2>
           <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Book your first session with one of our therapists and discover what true relaxation feels like.
+            Book your first session and experience the difference between a transactional massage and one that actually changes how you feel.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
