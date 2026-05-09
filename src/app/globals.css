@@ -23,18 +23,28 @@
   --font-dm-sans: 'DM Sans', system-ui, sans-serif;
 }
 
+/* ── Hero: prevent text/button overflow on small screens ── */
+section:first-of-type {
+  overflow: hidden;
+}
+
+/*
+ * ── Let Tailwind duration utilities win ────────────────────────────
+ * The global * {} rule below strips transition-duration so Tailwind
+ * utilities (e.g. duration-300, duration-500) control it per-element.
+ */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   transition-property: color, background-color, border-color, box-shadow, opacity;
-  transition-duration: 0.3s;
   transition-timing-function: ease;
+  /* duration intentionally omitted — Tailwind utilities control it */
 }
 
-/* Override duration for faster UI elements — these are exceptions, not defaults */
 button, a, [role="button"] {
-  transition-duration: 0.3s;
+  transition-property: color, background-color, border-color, box-shadow, opacity;
+  transition-timing-function: ease;
 }
 
 html {

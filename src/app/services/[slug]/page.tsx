@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getServiceBySlug, services } from '@/lib/services'
 import { ArrowLeft, Clock, Check, Star, ArrowRight } from 'lucide-react'
+import ServiceDetailClient from '@/components/ServiceDetailClient'
 
 interface Props {
   params: { slug: string }
@@ -40,7 +41,7 @@ export default function ServiceDetailPage({ params }: Props) {
             <ArrowLeft className="mr-2" size={16} />
             All Services
           </Link>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
               <span className="text-sm bg-sage/10 text-sage px-3 py-1 rounded-full">
                 {service.category}
@@ -62,27 +63,7 @@ export default function ServiceDetailPage({ params }: Props) {
                 </div>
               </div>
             </div>
-            <div className="space-y-6">
-              <div className="relative h-64 rounded-2xl overflow-hidden bg-sage/20">
-                <img
-                  src={`./images/${service.slug}.jpg`}
-                  alt={service.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="bg-sage/10 rounded-2xl p-6 text-center">
-                <p className="text-charcoal/60 mb-1 text-sm">Starting from</p>
-                <p className="text-4xl font-heading font-semibold text-sage mb-4">
-                  ${service.price}
-                </p>
-                <Link
-                  href="/booking"
-                  className="inline-flex items-center justify-center bg-sage text-white px-6 py-3 rounded-full font-medium hover:bg-sage-600 transition-colors w-full"
-                >
-                  Book This Service
-                </Link>
-              </div>
-            </div>
+            <ServiceDetailClient service={service} />
           </div>
         </div>
       </section>

@@ -1,3 +1,12 @@
+/**
+ * ServiceDetailClient — "use client" component that renders the right column
+ * (image + pricing card) in the service detail page.
+ * 
+ * This exists because Next.js 16.2.6 (Turbopack) + generateStaticParams()
+ * silently drops children of server-component divs during static HTML generation.
+ * Wrapping in a client component avoids this RSC serialization issue.
+ */
+
 'use client'
 
 import Link from 'next/link'
@@ -15,13 +24,11 @@ interface Props {
 }
 
 export default function ServiceDetailClient({ service }: Props) {
-  const imagePath = `./images/${service.slug}.jpg`
-
   return (
     <div className="space-y-6">
       <div className="relative h-64 rounded-2xl overflow-hidden bg-sage/20">
         <img
-          src={imagePath}
+          src={`/Redesign/images/${service.slug}.jpg`}
           alt={service.name}
           className="w-full h-full object-cover"
         />
